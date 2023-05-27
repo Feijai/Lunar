@@ -30,7 +30,7 @@ import AddMember from "@/components/Modal/AddMember";
 import ListButton from "@/components/ListButton";
 import CloneBoardButton from "@/components/CloneBoardButton";
 import { useAppSelector } from "@/hooks/useAppSelector";
-import { LabelsProps, NewLabelsProps } from "@/interfaces/labels";
+import { LabelsProps } from "@/interfaces/labels";
 import { newLabelApi } from "@/api/label";
 
 interface Label {

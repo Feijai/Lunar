@@ -20,7 +20,7 @@ const TrelloCardModal: React.FC<TrelloCardModalProps> = (props) => {
   // 打開卡片 Modal 時，取得卡片資料
   useEffect(() => {
     if (!openModal.open) {
-      setCardData(null);
+      //setCardData(null);
     } else {
       (async function () {
         try {
