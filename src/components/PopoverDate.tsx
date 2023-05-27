@@ -18,8 +18,8 @@ dayjs.extend(isBetween);
 
 const PopoverDate: React.FC = ({ close, position = null }) => {
   const { cardData, setCardData } = useCardModalContext();
-  const { id = "", date = {} as DateProps } = cardData ?? {};
-  const { startDate = "", dueDate = "" } = date ?? {}; // 2023-05-22T00:00:00.000Z
+  const { id, date } = cardData;
+  const { startDate, dueDate } = date ?? {}; // 2023-05-22T00:00:00.000Z
 
   const [startDateField, setStartDateField] = useState<Dayjs | null>(
     startDate ? () => dayjs(startDate) : null
@@ -94,18 +94,23 @@ const PopoverDate: React.FC = ({ close, position = null }) => {
     }
 
     try {
-      const { result } = await newCardDateApi(id, {
+      const {
+        result: { _id, cardId, dueComplete, startDate, dueDate },
+      } = await newCardDateApi(id, {
         startDate: startDateField?.format() ?? "",
         dueDate: endDateField?.format() ?? "",
       });
 
-      // 更新卡片畫面資料
+      // 更新卡片畫面資料 (...cardDate.date 可以為 null 故 date 內的欄位需全給)
       setCardData({
         ...cardData,
         date: {
-          ...cardData?.date,
-          startDate: result.startDate,
-          dueDate: result.dueDate,
+          _id: _id,
+          cardId: cardId,
+          dueComplete: dueComplete,
+          dueReminder: 0,
+          startDate: startDate,
+          dueDate: dueDate,
         },
       });
       close();
