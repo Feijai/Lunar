@@ -18,6 +18,8 @@ import {
 import type { PropsFromRedux } from "@/router";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import useWebSocket from "@/hooks/useWebSocket";
+import { getLabelApi } from "@/api/label";
+import { LabelsProps } from "@/interfaces/labels";
 
 const Billboard: React.FC<{
   setWorkSpace: PropsFromRedux["changeWorkSpace"];
@@ -27,6 +29,8 @@ const Billboard: React.FC<{
   const [cardList, setCardList] = useState<ListsProps[]>([]);
   const { boardId } = useParams();
   const [result, loading, callApi] = useApi(getBoardApi);
+  const [labelResult, _labelLoading, labelCallApi] = useApi(getLabelApi);
+  const [labelData, setLabelData] = useState<LabelsProps[]>([]);
   const { data, sendMessage } = useWebSocket(boardId!, callApi);
 
   useEffect(() => {
@@ -41,8 +45,20 @@ const Billboard: React.FC<{
       (async () => {
         await callApi(boardId);
       })();
+      (async () => {
+        await labelCallApi(boardId);
+      })();
     }
   }, [boardId]);
+
+  useEffect(() => {
+    if (boardId) {
+      (async () => {
+        await labelCallApi(boardId);
+      })();
+    }
+  });
+
   useEffect(() => {
     if (workSpace) {
       setWorkSpace();
@@ -53,8 +69,14 @@ const Billboard: React.FC<{
       setCardList(result.result.list);
       sendMessage({ type: "subscribe", boardId }); // socket
     }
+    if (labelResult?.result) {
+      const filteredList = labelResult?.result.filter((item, index, self) =>
+        index === self.findIndex((t) => t.name === item.name && t.color === item.color)
+      );
+      setLabelData(filteredList);
+    }
     return () => sendMessage({ type: "unsubscribe", boardId });
-  }, [result?.result]);
+  }, [result?.result, labelResult?.result]);
 
   const onDragEnd = (result: DropResult) => {
     const source = result.source;
@@ -95,6 +117,10 @@ const Billboard: React.FC<{
             boardInviteLink={result?.result.inviteLink || ""}
             name={result?.result.name || ""}
             member={result?.result.member || []}
+            orgId={result?.result.organizationId || ""}
+            labelData={labelData}
+            callApi={callApi}
+            boardId={boardId || ""}
           />
           <DragDropContext onDragEnd={onDragEnd}>
             <Droppable
