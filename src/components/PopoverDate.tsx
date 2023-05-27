@@ -11,7 +11,7 @@ import {
   AntCalendarStyled,
   PopoverSectionTitleStyled,
   DateSelectorStyled,
-} from "./PopverDateStyle";
+} from "./PopoverDateStyle";
 
 import isBetween from "dayjs/plugin/isBetween";
 dayjs.extend(isBetween);
