@@ -2,7 +2,6 @@ import React from "react";
 import {
   UserOutlined,
   ContainerOutlined,
-  CopyOutlined,
   ShareAltOutlined,
   ArrowRightOutlined,
   ClockCircleOutlined,
@@ -12,6 +11,7 @@ import {
 import { Divider } from "antd";
 import { ModalStyle, ModalSidebarStyled } from "./style";
 import AttachmentBox from "./AttachmentBox";
+import CloneCardBox from "./CloneCardBox";
 
 const ModalSidebar: React.FC = () => {
   const SidebarBox: React.FC<{
@@ -54,11 +54,9 @@ const ModalSidebar: React.FC = () => {
       <SidebarBox
         className={"mid"}
         title={"動作"}
-        data={[
-          { label: "移動", value: "move", icon: <ArrowRightOutlined /> },
-          { label: "複製", value: "copy", icon: <CopyOutlined /> },
-        ]}
+        data={[{ label: "移動", value: "move", icon: <ArrowRightOutlined /> }]}
       />
+      <CloneCardBox />
       <Divider style={{ margin: "8px 0" }} />
       <a href="" className="button-link">
         <span style={{ marginRight: "6px" }}>

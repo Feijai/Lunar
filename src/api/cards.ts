@@ -45,3 +45,15 @@ export const newCardCommentApi = (data: NewCommentProps) =>
     `/cards/${data.cardId}/comments`,
     data
   );
+
+// 複製單一卡片
+export const postCloneCardApi = (data: {
+  sourceCardId: string;
+  boardId: string;
+  listId: string;
+  name: string;
+  position: string;
+}) =>
+  Request.post<any, PrometheusResponse<CardsProps>>(`/cards/cloneById`, {
+    ...data,
+  });
