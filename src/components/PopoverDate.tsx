@@ -3,7 +3,6 @@ import { Button, Space, Checkbox, Input, Card, InputRef } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
-import { DateProps } from "@/interfaces/cards";
 import { useCardModalContext } from "@/context/CardModalContext";
 import { newCardDateApi, deleteCardDateApi } from "@/api/cards";
 import {
@@ -39,7 +38,14 @@ const PopoverDate: React.FC = ({ close, position = null }) => {
       // 初始都沒有設定日期日曆指定今天
       return dayjs(new Date());
     } else {
-      return editDateType === "start" ? startDateField : endDateField;
+      switch (editDateType) {
+        case "start":
+          return startDateField ? startDateField : undefined; // 因 Calendar value 只接受 dayjs 或 undefined
+        case "end":
+          return endDateField ? endDateField : undefined;
+        default:
+          return undefined;
+      }
     }
   };
 
