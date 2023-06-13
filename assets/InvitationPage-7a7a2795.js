@@ -1,0 +1,1 @@
+import{ce as s,aF as i,cf as o,aE as r,bG as c,r as p,aD as u,aK as f}from"./index-ab161cb2.js";const v=t=>s.post(`/invitation/${t.type}/${t.invitationToken}`),l=()=>{const t=i(o),{type:n,invitationToken:a}=r(),e=c();return p.useEffect(()=>{if(!t||!a||!n)return e("/login");v({type:n,invitationToken:a}).finally(()=>{e("/")})},[a]),u(f,{})};export{l as default};

@@ -1,0 +1,1 @@
+import{bG as o,aI as n,cm as c,r,cn as i,co as l,aD as p,aK as u}from"./index-ab161cb2.js";const g=()=>{const s=o(),t=n(),[e]=c(),a=e.get("token");return r.useEffect(()=>{a&&(i.set("lunar-token",a),t(l()).finally(()=>{s("/login")}))},[a]),p(u,{})};export{g as default};
