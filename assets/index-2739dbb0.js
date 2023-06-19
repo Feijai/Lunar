@@ -1,4 +1,4 @@
-import{ak as t,aI as e,r as o,ag as n,an as a}from"./index-bda3b61f.js";const{Header:i,Footer:r,Content:p}=e;t(p)``;t(i)`
+import{ak as t,aI as e,r as o,ag as n,an as a}from"./index-8f204990.js";const{Header:i,Footer:r,Content:p}=e;t(p)``;t(i)`
   height: 70px;
   background-color: white;
 `;t(r)`
