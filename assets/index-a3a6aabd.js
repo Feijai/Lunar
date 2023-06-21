@@ -1,4 +1,4 @@
-import{ak as t,aP as e,r as o,ag as n,an as a}from"./index-82a00655.js";const{Header:i,Footer:r,Content:p}=e;t(p)``;t(i)`
+import{am as t,aQ as e,r as o,ai as i,ap as a}from"./index-86788baf.js";const{Header:n,Footer:r,Content:p}=e;t(p)``;t(n)`
   height: 70px;
   background-color: white;
 `;t(r)`
@@ -34,4 +34,4 @@ import{ak as t,aP as e,r as o,ag as n,an as a}from"./index-82a00655.js";const{He
     font-weight: bold;
     font-size: 36px;
   }
-`;function h(){return o.useEffect(()=>{window.location.href="https://lunar-sigma.vercel.app/"},[]),n(a,{})}export{h as default};
+`;function h(){return o.useEffect(()=>{window.location.href="https://lunar-sigma.vercel.app/"},[]),i(a,{})}export{h as default};
