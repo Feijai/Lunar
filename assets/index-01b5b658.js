@@ -1,4 +1,4 @@
-import{am as t,aQ as e,r as o,ai as i,ap as a}from"./index-02905fea.js";const{Header:n,Footer:r,Content:p}=e;t(p)``;t(n)`
+import{am as t,aQ as e,r as o,ai as i,ap as a}from"./index-5763a4c2.js";const{Header:n,Footer:r,Content:p}=e;t(p)``;t(n)`
   height: 70px;
   background-color: white;
 `;t(r)`
